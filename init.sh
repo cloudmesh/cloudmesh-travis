@@ -23,9 +23,5 @@ ln -s `pwd` ~/.travis/travis-build
 bundle install
 
 # Create ssh key for Github
-ssh-keygen -t rsa -b 4096
-# Click enter to use default location for key
-# You can choose empty passphrase by clicking enter twice
-# Now that we have the key, let’s share with Github
+cat /dev/zero | ssh-keygen -t rsa -b 4096 -q -P ""
 less ~/.ssh/id_rsa.pub
-# Copy the contents of the id_rsa.pub
