@@ -1,15 +1,19 @@
 
+sudo apt-get update 
+sudo apt-get upgrade
+
 # now that you are in the docker image, switch to the travis user
 su — travis
 #passwd travis
 
 
 # Install a recent ruby (default is 1.9.3)
-rvm install 2.3.0
-rvm use 2.3.0
+rvm install 2.7.6
+rvm use 2.7.6
 gem sources --remove https://rubygems.org/
 gem sources -a http://rubygems.org/
 gem update --system
+gem install bundler
 
 # Install travis-build to generate a .sh out of .travis.yml
 
