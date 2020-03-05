@@ -1,28 +1,15 @@
 
-sudo apt-get update 
-sudo apt-get upgrade
-
-wget https://www.openssl.org/source/openssl-1.1.0f.tar.gz
-tar xzvf openssl-1.1.0f.tar.gz
-cd openssl-1.1.0f
-./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)'
-make
-sudo make install
-
-openssl version -a
-
 # now that you are in the docker image, switch to the travis user
-su — travis
-#passwd travis
+# sudo — travis
+
 
 
 # Install a recent ruby (default is 1.9.3)
-rvm install 2.7.6
-rvm use 2.7.6
+rvm install 2.3.0
+rvm use 2.3.0
 gem sources --remove https://rubygems.org/
 gem sources -a http://rubygems.org/
-gem update --system
-gem install bundler
+
 
 # Install travis-build to generate a .sh out of .travis.yml
 
@@ -31,7 +18,7 @@ cd builds
 git clone https://github.com/travis-ci/travis-build.git 
 cd travis-build 
 gem install travis 
-travis
+travis 
 ln -s `pwd` ~/.travis/travis-build 
 bundle install
 
