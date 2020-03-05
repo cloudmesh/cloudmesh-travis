@@ -1,7 +1,7 @@
 
 # now that you are in the docker image, switch to the travis user
-sudo — travis
-
+su — travis
+#passwd travis
 
 
 # Install a recent ruby (default is 1.9.3)
@@ -9,7 +9,7 @@ rvm install 2.3.0
 rvm use 2.3.0
 gem sources --remove https://rubygems.org/
 gem sources -a http://rubygems.org/
-
+gem update --system
 
 # Install travis-build to generate a .sh out of .travis.yml
 
@@ -18,7 +18,7 @@ cd builds
 git clone https://github.com/travis-ci/travis-build.git 
 cd travis-build 
 gem install travis 
-travis # to create ~/.travis 
+travis
 ln -s `pwd` ~/.travis/travis-build 
 bundle install
 
